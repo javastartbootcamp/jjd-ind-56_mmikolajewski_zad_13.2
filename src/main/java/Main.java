@@ -12,8 +12,12 @@ public class Main {
         ArrayList<Integer> numbers = inputNumbers(scanner);
         printReversedNumbers(numbers);
         printResultOfAdding(numbers);
-        printTheSmallestNumber(numbers);
-        printTheBiggestNumber(numbers);
+        try {
+            printTheSmallestNumber(numbers);
+            printTheBiggestNumber(numbers);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Nie dodano elementów do listy, lista jest pusta.");
+        }
 
         // napisz swój program tutaj. Do wczytywania danych użyj przekazanego w parametrze scannera
     }
