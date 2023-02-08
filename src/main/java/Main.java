@@ -10,20 +10,12 @@ public class Main {
 
     public void run(Scanner scanner) {
         ArrayList<Integer> numbers = inputNumbers(scanner);
-        checkListIsEmpty(numbers);
         printReversedNumbers(numbers);
         printResultOfAdding(numbers);
         printTheSmallestNumber(numbers);
         printTheBiggestNumber(numbers);
 
         // napisz swój program tutaj. Do wczytywania danych użyj przekazanego w parametrze scannera
-    }
-
-    private void checkListIsEmpty(ArrayList<Integer> numbers) {
-        if (numbers.isEmpty()) {
-            System.out.println("Lista jest pusta, brak możliwości wykonania dodatkowych operacji.");
-            System.exit(1);
-        }
     }
 
     private void printTheSmallestNumber(ArrayList<Integer> numbers) {
@@ -98,6 +90,11 @@ public class Main {
             }
             numbers.add(number);
         } while (status >= 0);
+        if (numbers.isEmpty()) {
+            System.out.println("Lista jest pusta, brak możliwości wykonania dodatkowych operacji.");
+            System.exit(1);
+        }
+
         return numbers;
     }
 }
