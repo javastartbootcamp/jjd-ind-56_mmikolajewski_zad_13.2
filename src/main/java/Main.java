@@ -10,36 +10,48 @@ public class Main {
 
     public void run(Scanner scanner) {
         ArrayList<Integer> numbers = inputNumbers(scanner);
+        checkListIsEmpty(numbers);
         printReversedNumbers(numbers);
         printResultOfAdding(numbers);
-        try {
-            printTheSmallestNumber(numbers);
-            printTheBiggestNumber(numbers);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Nie dodano elementów do listy, lista jest pusta.");
-        }
+        printTheSmallestNumber(numbers);
+        printTheBiggestNumber(numbers);
 
         // napisz swój program tutaj. Do wczytywania danych użyj przekazanego w parametrze scannera
     }
 
-    private void printTheSmallestNumber(ArrayList<Integer> numbers) {
-        int smallestNumber = numbers.get(0);
-        for (Integer number : numbers) {
-            if (number < smallestNumber) {
-                smallestNumber = number;
-            }
+    private void checkListIsEmpty(ArrayList<Integer> numbers) {
+        if (numbers.isEmpty()) {
+            System.out.println("Lista jest pusta, brak możliwości wykonania dodatkowych operacji.");
+            System.exit(1);
         }
-        System.out.println("Najmniejsza liczba w liście to " + smallestNumber);
+    }
+
+    private void printTheSmallestNumber(ArrayList<Integer> numbers) {
+        if (!numbers.isEmpty()) {
+            int smallestNumber = numbers.get(0);
+            for (Integer number : numbers) {
+                if (number < smallestNumber) {
+                    smallestNumber = number;
+                }
+            }
+            System.out.println("Najmniejsza liczba w liście to " + smallestNumber);
+        }  else {
+            System.out.println("Lista jest pusta");
+        }
     }
 
     private void printTheBiggestNumber(ArrayList<Integer> numbers) {
-        int biggestNumber = numbers.get(0);
-        for (Integer number : numbers) {
-            if (number > biggestNumber) {
-                biggestNumber = number;
+        if (!numbers.isEmpty()) {
+            int biggestNumber = numbers.get(0);
+            for (Integer number : numbers) {
+                if (number > biggestNumber) {
+                    biggestNumber = number;
+                }
             }
+            System.out.println("Największa liczba w liście to " + biggestNumber);
+        }  else {
+            System.out.println("Lista jest pusta");
         }
-        System.out.println("Największa liczba w liście to " + biggestNumber);
     }
 
     private void printResultOfAdding(ArrayList<Integer> numbers) {
@@ -54,6 +66,8 @@ public class Main {
             sb.replace(sb.length() - 2, sb.length(), "= ");
             sb.append(sum);
             System.out.println(sb);
+        } else {
+            System.out.println("Lista jest pusta");
         }
 
     }
@@ -67,6 +81,8 @@ public class Main {
             }
             sb.replace(sb.length() - 2, sb.length(), "");
             System.out.println(sb);
+        } else {
+            System.out.println("Lista jest pusta");
         }
 
     }
